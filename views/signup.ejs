@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EHad Todo App</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="todo.css">
+</head>
+<body>
+<div class="container">
+	<div class="row">
+	<div class=".col-md-6 .col-md-offset-3">
+	<section class="panel tasks-widget">
+      <header class="panel-heading">
+          <p class="bg-primary">User Registration</p>
+      </header>
+      <div class="panel-body">
+          <div class=""> 
+				<form action="/signup" method="post">
+		            <div class="form-group">
+				        <input type="text" class="form-control" name="username" placeholder="Username" required>
+			        </div>
+			        <div class="form-group">
+				        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+			        </div>
+			        <div class="form-group">
+				        <input type="password" class="form-control" id="confirm_password" name="cpassword" placeholder="Confirm Password" required>
+			        </div>
+			        <span style="font-size:12px"><a href="login">Back</a></span>
+					<button type="submit" class="btn btn-success btn-sm pull-right">Submit</button>
+				</form>
+          </div>
+      </div>
+  </section>
+  </div>
+  </div>
+</div>
+<script type="text/javascript" src="jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var password = document.getElementById("password"),
+		    confirm_password = document.getElementById("confirm_password");
+
+		function validatePassword(){
+		  if(password.value != confirm_password.value) {
+		    confirm_password.setCustomValidity("Passwords Don't Match");
+		  } else {
+		    confirm_password.setCustomValidity('');
+		  }
+		}
+
+		password.onchange = validatePassword;
+		confirm_password.onkeyup = validatePassword;
+	});
+</script>
+</body>
+</html>

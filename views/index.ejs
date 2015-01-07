@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EHad Todo App</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="todo.css">
+</head>
+<body>
+<div class="container">
+	<div class="row">
+	<div class=".col-md-6 .col-md-offset-3">
+	<section class="panel tasks-widget">
+      <header class="panel-heading">
+          <p class="bg-primary">Todo list</p>
+      </header>
+      <div class="panel-body">
+
+          <div class="task-content">
+
+              <ul class="task-list">
+
+                    <% for (var i = 0; i < items.length; i++) { %>
+						<li class="task-<%= items[i].status %>">
+						    <div class="task-checkbox">
+	                        	<input type="checkbox" class="task-list-check" value="<%= items[i]._id %>" <% if(items[i].status == 'done'){ %> checked <% }%> >
+	                      	</div>
+	                      <div class="task-title">
+	                          <span class="task-title-sp"><%= items[i].task %></span>
+	                          <div class="pull-right hidden-phone">
+	                              <a href="todo/delete/<%= items[i]._id %>"><button class="btn btn-danger btn-xs">x</i></button></a>
+	                          </div>
+	                      </div>
+                        </li>
+					<% } %>
+                  
+              </ul>
+          </div>
+
+          <div class=" add-task-row"> 
+				<form action="todo/add" method="post">
+		            <div class="form-group">
+				        <input type="text" class="form-control" name="task" placeholder="ADD Task">
+			        </div>
+					<button type="submit" class="btn btn-success btn-sm pull-right">Add New Tasks</button>
+				</form>
+          </div>
+      </div>
+  </section>
+  </div>
+  </div>
+</div>
+<script type="text/javascript" src="jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".btn-danger").on("click", function(e){
+			var r = confirm("Are You Sure? You want to DELETE!!!");
+			    if (r == true) {
+			    	return true;
+			    } else {
+		    		e.preventDefault();
+		    		return false;
+			    }
+		});
+		$('.task-list-check').click(function() {
+			var taskStatus = "done";
+
+	        if($(this).is(":checked")){
+	        	$(this).parent().parent().addClass('task-done');
+	        } else {
+	        	$(this).parent().parent().removeClass('task-done');
+	        	taskStatus = "new";
+	        }
+
+	        $.post( "todo/update", {id: $(this).val(), status: taskStatus}, function( data ) {
+				console.log(data);
+				return true;
+			});
+	    });
+	});
+
+</script>
+</body>
+</html>

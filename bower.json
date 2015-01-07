@@ -1,0 +1,11 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "Front end dependencies for TODO app",
+  "license": "MIT",
+  "author": "emranulhadi@gmail.com",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.3.1"
+  }
+}
