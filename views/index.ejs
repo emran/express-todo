@@ -11,7 +11,7 @@
 	<div class=".col-md-6 .col-md-offset-3">
 	<section class="panel tasks-widget">
       <header class="panel-heading">
-          <p class="bg-primary">Todo list</p>
+          <p class="bg-primary"><%= userData[0].username %> Todo list</p>
       </header>
       <div class="panel-body">
 
@@ -25,7 +25,7 @@
 	                        	<input type="checkbox" class="task-list-check" value="<%= items[i]._id %>" <% if(items[i].status == 'done'){ %> checked <% }%> >
 	                      	</div>
 	                      <div class="task-title">
-	                          <span class="task-title-sp"><%= items[i].task %></span>
+	                          <span class="task-title-sp"><%= items[i].task %></span><sub class="date"><%= items[i].date.toDateString() %></sub>
 	                          <div class="pull-right hidden-phone">
 	                              <a href="todo/delete/<%= items[i]._id %>"><button class="btn btn-danger btn-xs">x</i></button></a>
 	                          </div>
@@ -44,6 +44,8 @@
 					<button type="submit" class="btn btn-success btn-sm pull-right">Add New Tasks</button>
 				</form>
           </div>
+
+          <span style="font-size:12px"><a href="logout">Logout</a></span>
       </div>
   </section>
   </div>
