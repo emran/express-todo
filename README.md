@@ -18,7 +18,9 @@ Then run the following command
      
      $4: npm install -g nodemon // To see the Live change
      
-     $4: nodemon app.js  // To RUN the app. nodemon is another package to see live change
+     $4: nodemon app.js  // To RUN the app. 
+
+Then Browse http://localhost:3000/ . You will see the Homepage.
 
 For more details you can see [My Personal Blog](http://wp.me/pcdSN-3o)
 
